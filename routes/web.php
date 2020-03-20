@@ -55,3 +55,11 @@ Route::post('admin/store/subcat', 'Admin\Category\CategoryController@storeSubcat
 Route::get('edit/subcategory/{id}', 'Admin\Category\CategoryController@editSubcat');
 Route::post('update/subcategory/{id}', 'Admin\Category\CategoryController@updateSubcat');
 Route::get('delete/subcategory/{id}', 'Admin\Category\CategoryController@deleteSubcat');
+
+
+// Coupon---------
+Route::get('admin/sub/coupon', 'Admin\CouponController@coupon')->name('admin.coupon');
+Route::post('admin/store/coupon', 'Admin\CouponController@storeCoupon')->name('store.coupon');
+Route::get('edit/coupon/{id}', 'Admin\CouponController@editCoupon');
+Route::post('update/coupon/{id}', 'Admin\CouponController@updateCoupon');
+Route::get('delete/coupon/{id}', 'Admin\CouponController@deleteCoupon');
