@@ -33,16 +33,6 @@ class CouponController extends Controller
         return Redirect()->back()->with($notification);
     }
 
-    public function deleteCoupon($id)
-    {
-        DB::table('coupons')->where('id', $id)->delete();
-        $notification = array(
-            'messege' => 'Coupon Deleted',
-            'alert-type' => 'success'
-        );
-        return Redirect()->back()->with($notification);
-    }
-
     public function editCoupon($id)
     {
         $coupon = DB::table('coupons')->where('id', $id)->first();
@@ -61,5 +51,33 @@ class CouponController extends Controller
             'alert-type' => 'success'
         );
         return Redirect()->route('admin.coupon')->with($notification);
+    }
+
+
+    public function deleteCoupon($id)
+    {
+        DB::table('coupons')->where('id', $id)->delete();
+        $notification = array(
+            'messege' => 'Coupon Deleted',
+            'alert-type' => 'success'
+        );
+        return Redirect()->back()->with($notification);
+    }
+
+
+    public function newsletter()
+    {
+        $sub = DB::table('newsletters')->get();
+        return view('admin.coupon.newsletter', compact('sub'));
+    }
+
+    public function deleteSub($id)
+    {
+        DB::table('newsletters')->where('id', $id)->delete();
+        $notification = array(
+            'messege' => 'Subscriber Deleted',
+            'alert-type' => 'success'
+        );
+        return Redirect()->back()->with($notification);
     }
 }

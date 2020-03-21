@@ -12,10 +12,12 @@
 <link href="{{ asset('public/frontend/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css') }}" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/plugins/OwlCarousel2-2.2.1/owl.carousel.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/plugins/OwlCarousel2-2.2.1/owl.theme.default.css') }}">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/plugins/OwlCarousel2-2.2.1/animate.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/plugins/slick-1.8.0/slick.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/main_styles.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/responsive.css') }}">
+
 
 </head>
 
@@ -261,16 +263,38 @@ Copyright &copy;<script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd
 <script src="{{ asset('public/frontend/plugins/slick-1.8.0/slick.js') }}"></script>
 <script src="{{ asset('public/frontend/plugins/easing/easing.js') }}"></script>
 <script src="{{ asset('public/frontend/js/custom.js') }}"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
+<script>
+	@if(Session::has('messege'))
+	  var type="{{Session::get('alert-type','info')}}"
+	  switch(type){
+		  case 'info':
+			   toastr.info("{{ Session::get('messege') }}");
+			   break;
+		  case 'success':
+			  toastr.success("{{ Session::get('messege') }}");
+			  break;
+		  case 'warning':
+			 toastr.warning("{{ Session::get('messege') }}");
+			  break;
+		  case 'error':
+			  toastr.error("{{ Session::get('messege') }}");
+			  break;
+	  }
+	@endif
+ </script>
+
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+{{-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', 'UA-23581568-13');
-</script>
+</script> --}}
 
 </body>
 
