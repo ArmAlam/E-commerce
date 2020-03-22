@@ -69,6 +69,15 @@ Route::get('admin/newsletter', 'Admin\CouponController@newsletter')->name('admin
 Route::get('delete/sub/{id}', 'Admin\CouponController@deleteSub');
 
 
+// Products 
+Route::get('admin/product/all', 'Admin\ProductController@index')->name('all.product');
+Route::get('admin/product/add', 'Admin\ProductController@create')->name('add.product');
+
+// Get Sub-category by AJAX
+Route::get('get/subcategory/{category_id}', 'Admin\ProductController@getSubcat');
+
+
+
 
 // Frontend Routes=============
 Route::post('store/newsletter', 'FrontController@storeNewsletter')->name('store.newsletter');
