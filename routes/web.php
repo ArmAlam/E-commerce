@@ -72,6 +72,7 @@ Route::get('delete/sub/{id}', 'Admin\CouponController@deleteSub');
 // Products 
 Route::get('admin/product/all', 'Admin\ProductController@index')->name('all.product');
 Route::get('admin/product/add', 'Admin\ProductController@create')->name('add.product');
+Route::post('admin/store/product', 'Admin\ProductController@store')->name('store.product');
 
 // Get Sub-category by AJAX
 Route::get('get/subcategory/{category_id}', 'Admin\ProductController@getSubcat');

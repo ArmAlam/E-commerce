@@ -14,7 +14,7 @@
             <h6 class="card-body-title">New Product Add <a href="#" class="btn btn-success btn-small pull-right">All Products</a></h6>
             <p class="mg-b-20 mg-sm-b-30">New Product Add Form</p>
             
-            <form action="" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('store.product') }}" method="POST" enctype="multipart/form-data">
                 @csrf
             <div class="form-layout">
               <div class="row mg-b-25">
@@ -33,13 +33,13 @@
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label class="form-control-label">Quantity: <span class="tx-danger">*</span></label>
-                    <input class="form-control" type="text" name="quantity">
+                    <input class="form-control" type="text" name="product_quantity">
                   </div>
                 </div><!-- col-4 -->
                 <div class="col-lg-4">
                   <div class="form-group mg-b-10-force">
                     <label class="form-control-label">Category: <span class="tx-danger">*</span></label>
-                    <select class="form-control select2" data-placeholder="Choose country" name="category_id">
+                    <select class="form-control select2" data-placeholder="Choose Category" name="category_id">
                       <option label="Choose Category">Choose Category</option>
                       @foreach ($category as $row)
                         <option value="{{ $row->id}}">{{ $row->category_name }}</option>    
@@ -58,8 +58,8 @@
                   <div class="col-lg-4">
                     <div class="form-group mg-b-10-force">
                       <label class="form-control-label">Brand: <span class="tx-danger">*</span></label>
-                      <select class="form-control select2" data-placeholder="Choose country" name="brand_id">
-                        <option label="Choose Brand">Chose Brand</option>
+                      <select class="form-control select2" data-placeholder="Choose Brand" name="brand_id">
+                        <option label="Choose Brand">Choose Brand</option>
                         @foreach ($brand as $br)
                       <option value="{{ $br->id }}">{{ $br->brand_name}}</option>
                         @endforeach
@@ -111,7 +111,7 @@
                 <div class="col-lg-4">
                   <label>Image One (Main Thumbnail) <span class="tx-danger">*</span></label>
                   <label class="custom-file">
-                    <input type="file" class="custom-file-input" name="image_one" id="file" onchange="readURL(this);">
+                    <input type="file" class="custom-file-input" name="image_one" id="file" onchange="readURL(this);" required accept="image">
                     <span class="custom-file-control"></span>
                     <img src="#" alt="" id="one">
                   </label>
@@ -120,7 +120,7 @@
                 <div class="col-lg-4">
                   <label>Image Two <span class="tx-danger">*</span></label>
                   <label class="custom-file">
-                    <input type="file" class="custom-file-input" name="image_two" id="file" onchange="readURL1(this);">
+                    <input type="file" class="custom-file-input" name="image_two" id="file" onchange="readURL1(this);" required accept="image">
                     <span class="custom-file-control"></span>
                     <img src="#" alt="" id="two">
                   </label>
@@ -129,7 +129,7 @@
                 <div class="col-lg-4">
                   <label>Image Three <span class="tx-danger">*</span></label>
                   <label class="custom-file">
-                    <input type="file" class="custom-file-input" name="image_three" id="file" onchange="readURL2(this);">
+                    <input type="file" class="custom-file-input" name="image_three" id="file" onchange="readURL2(this);" required accept="image">
                     <span class="custom-file-control"></span>
                     <img src="#" alt="" id="three">
                   </label>
