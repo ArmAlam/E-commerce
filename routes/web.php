@@ -75,8 +75,16 @@ Route::get('admin/product/add', 'Admin\ProductController@create')->name('add.pro
 Route::post('admin/store/product', 'Admin\ProductController@store')->name('store.product');
 Route::get('active/product/{id}', 'Admin\ProductController@active');
 Route::get('inactive/product/{id}', 'Admin\ProductController@inactive');
+Route::get('view/product/{id}', 'Admin\ProductController@viewProduct');
+Route::get('edit/product/{id}', 'Admin\ProductController@editProduct');
+Route::post('update/product/withoutphoto/{id}', 'Admin\ProductController@updateProductWithoutPhoto');
+Route::post('update/product/photo/{id}', 'Admin\ProductController@updateProductPhoto');
 Route::get('delete/product/{id}', 'Admin\ProductController@deleteProduct');
 
+
+// Blog Post
+Route::get('admin/add/post', 'Admin\PostController@create')->name('add.blogpost');
+Route::post('admin/store/post', 'Admin\PostController@store')->name('store.post');
 
 
 
