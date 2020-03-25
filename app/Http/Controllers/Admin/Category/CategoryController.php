@@ -112,14 +112,14 @@ class CategoryController extends Controller
             $data['brand_logo'] = $image_url;
             $brand = DB::table('brands')->insert($data);
             $notification = array(
-                'message' => 'Brand Inserted Successfully',
+                'messege' => 'Brand Inserted Successfully',
                 'alert-type' => 'success'
             );
             return Redirect()->back()->with($notification);
         } else {
             $brand = DB::table('brands')->insert($data);
             $notification = array(
-                'message' => 'Brand Inserted Successfully',
+                'messege' => 'Brand Inserted Successfully',
                 'alert-type' => 'success'
             );
             return Redirect()->back()->with($notification);
@@ -150,14 +150,14 @@ class CategoryController extends Controller
             $data['brand_logo'] = $image_url;
             $brand = DB::table('brands')->where('id', $id)->update($data);
             $notification = array(
-                'message' => 'Brand Updated Successfully',
+                'messege' => 'Brand Updated Successfully',
                 'alert-type' => 'success'
             );
             return Redirect()->route('brands')->with($notification);
         } else {
             $brand = DB::table('brands')->where('id', $id)->update($data);
             $notification = array(
-                'message' => 'Brand Inserted Successfully',
+                'messege' => 'Brand Inserted Successfully',
                 'alert-type' => 'success'
             );
             return Redirect()->route('brands')->with($notification);
@@ -172,7 +172,7 @@ class CategoryController extends Controller
         unlink($image);
         $brand = DB::table('brands')->where('id', $id)->delete();
         $notification = array(
-            'message' => 'Brand Deleted Successfully',
+            'messege' => 'Brand Deleted Successfully',
             'alert-type' => 'success'
         );
         return Redirect()->back()->with($notification);
