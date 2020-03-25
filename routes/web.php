@@ -84,7 +84,12 @@ Route::get('delete/product/{id}', 'Admin\ProductController@deleteProduct');
 
 // Blog Post
 Route::get('admin/add/post', 'Admin\PostController@create')->name('add.blogpost');
+Route::get('admin/all/post', 'Admin\PostController@index')->name('all.blogpost');
 Route::post('admin/store/post', 'Admin\PostController@store')->name('store.post');
+Route::get('edit/post/{id}', 'Admin\PostController@edit');
+Route::post('update/post/{id}', 'Admin\PostController@update');
+Route::get('delete/post/{id}', 'Admin\PostController@destroy');
+
 
 
 

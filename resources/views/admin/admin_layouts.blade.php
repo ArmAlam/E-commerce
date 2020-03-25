@@ -114,7 +114,7 @@
     <ul class="sl-menu-sub nav flex-column">
       <li class="nav-item"><a href="#" class="nav-link">Category</a></li>
     <li class="nav-item"><a href="{{ route('add.blogpost') }}" class="nav-link">Add Post</a></li>
-      <li class="nav-item"><a href="#" class="nav-link">All Posts</a></li>
+    <li class="nav-item"><a href="{{ route('all.blogpost') }}" class="nav-link">All Posts</a></li>
     </ul>
 
     <a href="#" class="sl-menu-link">
