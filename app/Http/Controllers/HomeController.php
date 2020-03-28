@@ -30,7 +30,8 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function changePassword(){
+    public function changePassword()
+    {
         return view('auth.changepassword');
     }
 
@@ -68,16 +69,14 @@ class HomeController extends Controller
 
     // }
 
-    // public function Logout()
-    // {
-    //     // $logout= Auth::logout();
-    //         Auth::logout();
-    //         $notification=array(
-    //             'messege'=>'Successfully Logout',
-    //             'alert-type'=>'success'
-    //              );
-    //          return Redirect()->to('/')->with($notification);
-
-
-    // }
+    public function Logout()
+    {
+        // $logout= Auth::logout();
+        Auth::logout();
+        $notification = array(
+            'messege' => 'Successfully Logged Out',
+            'alert-type' => 'success'
+        );
+        return Redirect()->route('login')->with($notification);
+    }
 }

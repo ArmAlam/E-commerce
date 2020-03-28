@@ -17,6 +17,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/plugins/slick-1.8.0/slick.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/main_styles.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/responsive.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/contact_responsive.css') }}">
 
 
 </head>
@@ -60,8 +61,11 @@
 							</div>
 							<div class="top_bar_user">
 								<div class="user_icon"><img src="{{asset('public/frontend/images/user.svg')}}" alt=""></div>
-								<div><a href="{{ route('register') }}">Register</a></div>
-								<div><a href="{{ route('login') }}">Sign in</a></div>
+								@guest
+								  <div><a href="{{ route('login') }}">Register/Log in</a></div>
+								@else
+								  <div><a href="{{ route('home') }}">Profile</a></div>
+								@endguest								
 							</div>
 						</div>
 					</div>
