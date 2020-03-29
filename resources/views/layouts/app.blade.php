@@ -49,22 +49,30 @@
 											<li><a href="#">Japanese</a></li>
 										</ul>
 									</li>
-									<li>
+									{{-- <li>
 										<a href="#">$ US dollar<i class="fas fa-chevron-down"></i></a>
 										<ul>
 											<li><a href="#">EUR Euro</a></li>
 											<li><a href="#">GBP British Pound</a></li>
 											<li><a href="#">JPY Japanese Yen</a></li>
 										</ul>
-									</li>
+									</li> --}}
 								</ul>
 							</div>
-							<div class="top_bar_user">
-								<div class="user_icon"><img src="{{asset('public/frontend/images/user.svg')}}" alt=""></div>
+							<div class="top_bar_user">								
 								@guest
-								  <div><a href="{{ route('login') }}">Register/Log in</a></div>
+								  <div><a href="{{ route('login') }}"><img src="{{asset('public/frontend/images/user.svg')}}" alt="">Register/Log in</a></div>
 								@else
-								  <div><a href="{{ route('home') }}">Profile</a></div>
+									<ul class="standard_dropdown top_bar_dropdown">
+										<li>
+											<a href="{{ route('home') }}"><div class="user_icon"><img src="{{asset('public/frontend/images/user.svg')}}" alt=""></div>Profile<i class="fas fa-chevron-down"></i></a>
+											<ul>
+												<li><a href="#">Wishlist</a></li>
+												<li><a href="#">Checkout</a></li>
+												<li><a href="#">extra</a></li>
+											</ul>
+										</li>
+									</ul>								
 								@endguest								
 							</div>
 						</div>

@@ -239,7 +239,12 @@
                                                 <button class="product_cart_button">Add to Cart</button>
                                             </div>
                                         </div>
-                                        <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                        {{-- <div class="product_fav"><i class="fas fa-heart text-danger"></i></div> --}}
+                                        <button class="addwishlist" data-id="{{ $row->id }}">
+                                            <div class="product_fav">
+                                                <i class="fa fa-heart text-info"></i>
+                                            </div>
+                                        </button>
                                         <ul class="product_marks">
                                             @if ($tre->discount_price == NULL )
                                                 <li class="product_mark product_discount" style="background:green;">New</li>
