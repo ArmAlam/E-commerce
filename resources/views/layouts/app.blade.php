@@ -4,12 +4,12 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
 <title>OneTech</title>
+<meta name="csrf" value="{{ csrf_token() }}">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="OneTech shop project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/bootstrap4/bootstrap.min.css') }}">
-<link href="{{ asset('public/frontend/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css') }}" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/plugins/OwlCarousel2-2.2.1/owl.carousel.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/plugins/OwlCarousel2-2.2.1/owl.theme.default.css') }}">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
@@ -18,7 +18,8 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/main_styles.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/responsive.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/contact_responsive.css') }}">
-
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="sweetalert2.min.css">
 
 </head>
 
@@ -61,7 +62,7 @@
 							</div>
 							<div class="top_bar_user">								
 								@guest
-								  <div><a href="{{ route('login') }}"><img src="{{asset('public/frontend/images/user.svg')}}" alt="">Register/Log in</a></div>
+								  <div><a href="{{ route('login') }}">Register/Log in</a></div>
 								@else
 									<ul class="standard_dropdown top_bar_dropdown">
 										<li>
@@ -278,6 +279,7 @@ Copyright &copy;<script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd
 <script src="{{ asset('public/frontend/plugins/easing/easing.js') }}"></script>
 <script src="{{ asset('public/frontend/js/custom.js') }}"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
 <script>
 	@if(Session::has('messege'))

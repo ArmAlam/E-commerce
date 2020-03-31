@@ -96,6 +96,14 @@ Route::get('delete/post/{id}', 'Admin\PostController@destroy');
 // Get Sub-category by AJAX
 Route::get('get/subcategory/{category_id}', 'Admin\ProductController@getSubcat');
 
+// Wishlists
+Route::get('add/wishlist/{id}', 'WishlistController@addWishlist');
+
+
+// Cart
+Route::get('add/to/cart/{id}', 'CartController@addCart');
+Route::get('check', 'CartController@check');
+
 
 
 
