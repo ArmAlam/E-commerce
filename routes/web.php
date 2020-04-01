@@ -112,4 +112,10 @@ Route::post('store/newsletter', 'FrontController@storeNewsletter')->name('store.
 
 
 
+// Social Login Routes===========
+Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
+Route::get('/callback/{provider}', 'SocialController@callback');
+
+
+
 // Customer Profile Related Routes

@@ -120,7 +120,7 @@
         <a href="{{ route('password.request') }}">Forgot My Password?</a>
             <br><br>
             <button type="submit" class="btn btn-primary btn-block">Login with Facebok</button>
-            <button type="submit" class="btn btn-danger btn-block">Login with Google</button>
+            <a href="{{ url('/auth/redirect/google') }}" class="btn btn-danger btn-block">Login with Google</a>
           
 
         </div>

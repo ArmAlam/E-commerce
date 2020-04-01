@@ -10,7 +10,7 @@
       <form action="{{ route('admin.login') }}" method="POST">
           @csrf
           <div class="form-group">
-            <input type="email" class="form-control" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email Address">
+            <input type="email" class="form-control" @error('email') is-invalid @enderror name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email Address">
           </div><!-- form-group -->
           @error('email')
             <span class="invalid-feedback" role="alert">
