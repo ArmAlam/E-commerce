@@ -8,7 +8,10 @@ use DB;
 
 class CartController extends Controller
 {
-    public function addCart($id)
+    //
+
+
+    public function AddCart($id)
     {
         $product = DB::table('products')->where('id', $id)->first();
         $data = array();
@@ -19,8 +22,10 @@ class CartController extends Controller
             $data['price'] = $product->selling_price;
             $data['weight'] = 1;
             $data['options']['image'] = $product->image_one;
+            $data['options']['color'] = '';
+            $data['options']['size'] = '';
             Cart::add($data);
-            return response()->json(['success' => 'Added to Cart']);
+            return response()->json(['success' => 'Successfully Added on your Cart']);
         } else {
             $data['id'] = $product->id;
             $data['name'] = $product->product_name;
@@ -28,9 +33,11 @@ class CartController extends Controller
             $data['price'] = $product->discount_price;
             $data['weight'] = 1;
             $data['options']['image'] = $product->image_one;
+            $data['options']['color'] = '';
+            $data['options']['size'] = '';
             return response()->json($data);
             Cart::add($data);
-            return response()->json(['success' => 'Added to Cart']);
+            return response()->json(['success' => 'Successfully Added on your Cart']);
         }
     }
 

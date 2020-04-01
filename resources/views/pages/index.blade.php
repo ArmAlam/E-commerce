@@ -163,14 +163,15 @@
                                     <div class="featured_slider_item">
                                         <div class="border_active"></div>
                                         <div class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
-                                            <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="{{ asset($row->image_one) }}" style="height: 120px; width: 130px;"></div>
+                                            <div class="product_image d-flex flex-column align-items-center justify-content-center">
+                                                <img src="{{ asset($row->image_one) }}" style="height: 120px; width: 130px;"></div>
                                             <div class="product_content">
                                             @if($row->discount_price == NULL)
                                                 <br><span class="text-danger"><b> ${{ $row->selling_price }} </b></span>
                                             @else
                                              <div class="product_price discount">${{ $row->discount_price }}<span>${{ $row->selling_price }}</span></div>
                                             @endif
-                                                <div class="product_name"><div><a href="#">
+                                                <div class="product_name"><div><a href="{{ url('product/details/'.$row->id.'/'.$row->product_name) }}">
                                                     {{ $row->product_name }}
                                                 </a></div></div>
                                                 <div class="product_extras">
@@ -375,7 +376,7 @@
 
 <!--first category--->
 @php 
-$cats=DB::table('categories')->skip(2)->first();
+$cats=DB::table('categories')->skip(5)->first();
 $category_id=$cats->id;
 $products=DB::table('products')->where('category_id',$category_id)->where('status',1)->limit(16)->orderBy('id','DESC')->get();
 
@@ -760,7 +761,7 @@ $products=DB::table('products')->where('category_id',$category_id)->where('statu
                             <div class="newsletter_text"><p>...and receive %20 coupon for first shopping.</p></div>
                         </div>
                         <div class="newsletter_content clearfix">
-                            <form action="{{ route('store.newsletter') }}" class="newsletter_form" method="post">
+                            <form action="{{ route('store.newslater') }}" class="newsletter_form" method="post">
                                 @csrf
                                 <input type="email" class="newsletter_input" required="required" placeholder="Enter your email address" name="email">
                                 <button class="newsletter_button" type="submit">Subscribe</button>
