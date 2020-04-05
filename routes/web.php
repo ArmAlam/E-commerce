@@ -13,6 +13,11 @@ Route::get('add/wishlist/{id}', 'WishlistController@AddWishlist');
 //cart
 Route::get('add/to/cart/{id}', 'CartController@AddCart');
 Route::get('check', 'CartController@check');
+Route::get('products/cart', 'CartController@showCart')->name('show.cart');
+Route::get('remove/cart/{rowId}', 'CartController@removeCart');
+Route::post('update/cart/item', 'CartController@UpdateCart')->name('update.cartitem');
+Route::get('cart/product/view/{id}', 'CartController@ViewProduct');
+Route::post('insert/into/cart/', 'CartController@InsertCart')->name('insert.into.cart');
 
 //home or single auth routes========================================
 Route::get('/', function () {
@@ -64,7 +69,7 @@ Route::get('delete/coupon/{id}', 'Admin\CouponController@DeleteCoupon');
 Route::get('edit/coupon/{id}', 'Admin\CouponController@EditCoupon');
 Route::post('update/coupon/{id}', 'Admin\CouponController@UpdateCoupon');
 //newslater
-Route::get('admin/newslater', 'Admin\CouponController@Newslater')->name('admin.newslater');
+Route::get('admin/newsletter', 'Admin\CouponController@newsLetter')->name('admin.newsLetter');
 Route::get('delete/sub/{id}', 'Admin\CouponController@DeleteSub');
 //products routes=====
 Route::get('admin/product/all', 'Admin\ProductController@index')->name('all.product');
@@ -90,8 +95,8 @@ Route::post('update/post/{id}', 'Admin\PostController@update');
 
 
 
-//frontend all routes are here--------
-Route::post('store/newslater', 'FrontController@storeNewsletter')->name('store.newslater');
+//frontedn all routesa are here--------
+Route::post('store/newslater', 'FrontController@StoreNewslater')->name('store.newslater');
 
 Route::get('/product/details/{id}/{product_name}', 'ProductController@ProductView');
 Route::post('/cart/product/add/{id}', 'ProductController@AddCart');
