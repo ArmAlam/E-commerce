@@ -74,8 +74,8 @@
                                         <a href="{{ route('home') }}"><div class="user_icon"><img src="{{ asset('public/frontend/images/user.svg') }}" alt=""></div>
                                             Profile<i class="fas fa-chevron-down"></i></a>
                                         <ul>
-                                            <li><a href="#">Wishlist</a></li>
-                                            <li><a href="#">Checkout</a></li>
+                                            <li><a href="{{ route('user.wishlist') }}">Wishlist</a></li>
+                                            <li><a href="{{ route('user.checkout') }}">Checkout</a></li>
                                             <li><a href="#">Extra</a></li>
                                         </ul>
                                     </li>
@@ -143,7 +143,7 @@
                             <div class="wishlist d-flex flex-row align-items-center justify-content-end">
                                 <div class="wishlist_icon"><img src="images/heart.png" alt=""></div>
                                 <div class="wishlist_content">
-                                    <div class="wishlist_text"><a href="#">Wishlist</a></div>
+                                <div class="wishlist_text"><a href="{{ route('user.wishlist') }}">Wishlist</a></div>
                                     <div class="wishlist_count">{{ count($wishlist) }}</div>
                                 </div>
                             </div>

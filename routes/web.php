@@ -18,6 +18,21 @@ Route::get('remove/cart/{rowId}', 'CartController@removeCart');
 Route::post('update/cart/item', 'CartController@UpdateCart')->name('update.cartitem');
 Route::get('cart/product/view/{id}', 'CartController@ViewProduct');
 Route::post('insert/into/cart/', 'CartController@InsertCart')->name('insert.into.cart');
+Route::get('user/checkout/', 'CartController@Checkout')->name('user.checkout');
+Route::get('user/wishlist/', 'CartController@Wishlist')->name('user.wishlist');
+Route::post('user/apply/coupon/', 'CartController@Coupon')->name('apply.coupon');
+Route::get('coupon/remove/', 'CartController@CouponRemove')->name('coupon.remove');
+Route::get('payment/page/', 'CartController@PaymentPage')->name('payment.step');
+//payment methods
+Route::post('user/payment/process/', 'PaymentController@payment')->name('payment.process');
+
+//blog routes
+
+Route::get('blog/post', 'BlogController@blog')->name('blog.post');
+
+Route::get('language/bangla', 'BlogController@Bangla')->name('language.bangla');
+Route::get('language/english', 'BlogController@English')->name('language.english');
+
 
 //home or single auth routes========================================
 Route::get('/', function () {
@@ -69,7 +84,7 @@ Route::get('delete/coupon/{id}', 'Admin\CouponController@DeleteCoupon');
 Route::get('edit/coupon/{id}', 'Admin\CouponController@EditCoupon');
 Route::post('update/coupon/{id}', 'Admin\CouponController@UpdateCoupon');
 //newslater
-Route::get('admin/newsletter', 'Admin\CouponController@newsLetter')->name('admin.newsLetter');
+Route::get('admin/newslater', 'Admin\CouponController@newsletter')->name('admin.newsletter');
 Route::get('delete/sub/{id}', 'Admin\CouponController@DeleteSub');
 //products routes=====
 Route::get('admin/product/all', 'Admin\ProductController@index')->name('all.product');
@@ -100,6 +115,3 @@ Route::post('store/newslater', 'FrontController@StoreNewslater')->name('store.ne
 
 Route::get('/product/details/{id}/{product_name}', 'ProductController@ProductView');
 Route::post('/cart/product/add/{id}', 'ProductController@AddCart');
-
-
-//customer profile related routes

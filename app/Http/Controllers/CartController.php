@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 use Cart;
 use DB;
 use Response;
+use Auth;
+use Session;
 
 class CartController extends Controller
 {
-    //
+
 
 
     public function AddCart($id)
@@ -127,5 +129,67 @@ class CartController extends Controller
             );
             return Redirect()->back()->with($notification);
         }
+    }
+
+
+    public function Checkout()
+    {
+        if (Auth::check()) {
+            $cart = Cart::content();
+            return view('pages.checkout', compact('cart'));
+        } else {
+            $notification = array(
+                'messege' => 'AT first login your account',
+                'alert-type' => 'success'
+            );
+            return redirect()->route('login')->with($notification);
+        }
+    }
+
+    public function Wishlist()
+    {
+        $userid = Auth::id();
+        $product = DB::table('wishlists')->join('products', 'wishlists.product_id', 'products.id')
+            ->select('products.*', 'wishlists.user_id')
+            ->where('wishlists.user_id', $userid)
+            ->get();
+        return view('pages.wishlist', compact('product'));
+    }
+
+
+    public function Coupon(Request $request)
+    {
+        $coupon = $request->coupon;
+        $check = DB::table('coupons')->where('coupon', $coupon)->first();
+        if ($check) {
+            session::put('coupon', [
+                'name' => $check->coupon,
+                'discount' => $check->discount,
+                'balance' => Cart::Subtotal() - $check->discount
+            ]);
+            $notification = array(
+                'messege' => 'Successfully Coupon Applied',
+                'alert-type' => 'success'
+            );
+            return redirect()->back()->with($notification);
+        } else {
+            $notification = array(
+                'messege' => 'Invalid Coupon',
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification);
+        }
+    }
+
+    public function CouponRemove()
+    {
+        session::forget('coupon');
+        return redirect()->back();
+    }
+
+    public function PymentPage()
+    {
+        $cart = Cart::content();
+        return view('pages.payment', compact('cart'));
     }
 }
