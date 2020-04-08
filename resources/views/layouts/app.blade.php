@@ -105,9 +105,9 @@
                         <div class="logo_container">
                             <div class="logo"><a href="{{ url('/') }}">
                                   @if(session()->get('lang') == 'bangla')
-                                     এল এইচ স্টোর
+                                       আর্ম  স্টোর
                                      @else
-                                       LH Store
+                                       Arm Store
                                      @endif
                           
                         </a></div>
