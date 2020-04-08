@@ -45,29 +45,32 @@
                         <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('public/frontend/images/mail.png') }}" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
                         <div class="top_bar_content ml-auto">
                             <div class="top_bar_menu">
-                                <ul class="standard_dropdown top_bar_dropdown">
+                                <ul class="standard_dropdown ">
+                                    @php 
+                                        $language=session()->get('lang');
+                                    @endphp
                                     <li>
-                                        <a href="#">English<i class="fas fa-chevron-down"></i></a>
-                                        <ul>
-                                            <li><a href="#">Italian</a></li>
-                                            <li><a href="#">Spanish</a></li>
-                                            <li><a href="#">Japanese</a></li>
-                                        </ul>
+                                        @if(session()->get('lang') == 'bangla')
+                                        <a href="{{ route('language.english') }}">English<i class="fas fa-chevron-down"></i></a>
+                                        @else
+                                         <a href="{{ route('language.bangla') }}">Bangla<i class="fas fa-chevron-down"></i></a>
+                                         @endif
+                                        
                                     </li>
-                                   {{--  <li>
-                                        <a href="#">$ US dollar<i class="fas fa-chevron-down"></i></a>
-                                        <ul>
-                                            <li><a href="#">EUR Euro</a></li>
-                                            <li><a href="#">GBP British Pound</a></li>
-                                            <li><a href="#">JPY Japanese Yen</a></li>
-                                        </ul>
-                                    </li> --}}
+                             
                                 </ul>
                             </div>
                             <div class="top_bar_user">
                                 
                                 @guest
-                                <div><a href="{{ route('login') }}"> Register/Login</a></div>
+                                <div><a href="{{ route('login') }}">
+                                    @if(session()->get('lang') == 'bangla')
+                                    রেজিস্টার / লগইন 
+                                    @else
+                                     Register/Login
+                                    @endif
+                                 
+                              </a></div>
                                 @else
                                 <ul class="standard_dropdown top_bar_dropdown">
                                     <li>
@@ -100,7 +103,14 @@
                     <!-- Logo -->
                     <div class="col-lg-2 col-sm-3 col-3 order-1">
                         <div class="logo_container">
-                            <div class="logo"><a href="{{ url('/') }}">Learn</a></div>
+                            <div class="logo"><a href="{{ url('/') }}">
+                                  @if(session()->get('lang') == 'bangla')
+                                     এল এইচ স্টোর
+                                     @else
+                                       LH Store
+                                     @endif
+                          
+                        </a></div>
                         </div>
                     </div>
                     @php  
@@ -143,13 +153,18 @@
                             <div class="wishlist d-flex flex-row align-items-center justify-content-end">
                                 <div class="wishlist_icon"><img src="images/heart.png" alt=""></div>
                                 <div class="wishlist_content">
-                                <div class="wishlist_text"><a href="{{ route('user.wishlist') }}">Wishlist</a></div>
+                                    <div class="wishlist_text"><a href="{{ route('user.wishlist') }}">Wishlist</a></div>
                                     <div class="wishlist_count">{{ count($wishlist) }}</div>
                                 </div>
                             </div>
                             @endguest
 
                             <!-- Cart -->
+                            @php  
+                                $setting=DB::table('settings')->first();
+                                $charge=$setting->shipping_charge;
+
+                            @endphp
                             <div class="cart">
                                 <div class="cart_container d-flex flex-row align-items-center justify-content-end">
                                     <div class="cart_icon">
@@ -158,7 +173,11 @@
                                     </div>
                                     <div class="cart_content">
                                         <div class="cart_text"><a href="{{ route('show.cart') }}">Cart</a></div>
-                                        <div class="cart_price">${{ Cart::Subtotal() }}</div>
+                                        @if(Session::has('coupon'))
+                                        <div class="cart_price">$ {{ Session::get('coupon')['balance'] + $charge }} </div>
+                                        @else
+                                        <div class="cart_price">$ {{ Cart::Subtotal() }}</div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -263,9 +282,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                         <div class="logos ml-sm-auto">
                             <ul class="logos_list">
                                 <li><a href="#"><img src="{{ asset('public/frontend/images/logos_1.png') }}" alt=""></a></li>
-                                <li><a href="#"><img src="{{ asset('public/frontend/images/logos_1.png') }}" alt=""></a></li>
-                                <li><a href="#"><img src="{{ asset('public/frontend/images/logos_1.png') }}" alt=""></a></li>
-                                <li><a href="#"><img src="{{ asset('public/frontend/images/logos_1.png') }}" alt=""></a></li>
+                                <li><a href="#"><img src="{{ asset('public/frontend/images/logos_2.png') }}" alt=""></a></li>
+                                <li><a href="#"><img src="{{ asset('public/frontend/images/logos_3.png') }}" alt=""></a></li>
+                                <li><a href="#"><img src="{{ asset('public/frontend/images/logos_4.png') }}" alt=""></a></li>
                             </ul>
                         </div>
                     </div>
@@ -316,8 +335,3 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         @endif
      </script> 
 
-
-
-</body>
-
-</html>
