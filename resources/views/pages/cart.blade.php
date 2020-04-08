@@ -79,8 +79,8 @@
 						</div>
 
 						<div class="cart_buttons">
-							<button type="button" class="button cart_button_clear"> Cancel</button>
-							<button type="button" class="button cart_button_checkout">Checkout</button>
+							<button type="button" class="button cart_button_clear">All Cancel</button>
+							<a href="{{ route('user.checkout') }}" class="button cart_button_checkout">Checkout</a>
 						</div>
 					</div>
 				</div>
