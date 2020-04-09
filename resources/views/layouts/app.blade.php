@@ -24,6 +24,7 @@
 
 <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/product_styles.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/styles/product_responsive.css') }}">
+<script src="https://js.stripe.com/v3/"></script>
 
 </head>
 
@@ -105,9 +106,9 @@
                         <div class="logo_container">
                             <div class="logo"><a href="{{ url('/') }}">
                                   @if(session()->get('lang') == 'bangla')
-                                       আর্ম  স্টোর
+                                     এল এইচ স্টোর
                                      @else
-                                       Arm Store
+                                       LH Store
                                      @endif
                           
                         </a></div>
@@ -335,3 +336,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         @endif
      </script> 
 
+
+
+</body>
+
+</html>

@@ -60,4 +60,12 @@ class ProductController extends Controller
             return Redirect()->to('/')->with($notification);
         }
     }
+
+    public function productsView($id)
+    {
+        $products = DB::table('products')->where('subcategory_id', $id)->paginate(30);
+        $brands = DB::table('products')->where('subcategory_id', $id)->select('brand_id')->groupBy('brand_id')->get();
+
+        return view('pages.all_products', compact('products', 'brands'));
+    }
 }

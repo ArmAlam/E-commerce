@@ -23,8 +23,10 @@ Route::get('user/wishlist/', 'CartController@Wishlist')->name('user.wishlist');
 Route::post('user/apply/coupon/', 'CartController@Coupon')->name('apply.coupon');
 Route::get('coupon/remove/', 'CartController@CouponRemove')->name('coupon.remove');
 Route::get('payment/page/', 'CartController@PaymentPage')->name('payment.step');
+
 //payment methods
 Route::post('user/payment/process/', 'PaymentController@payment')->name('payment.process');
+Route::post('user/stripe/charge/', 'PaymentController@STripeCharge')->name('stripe.charge');
 
 //blog routes
 
@@ -84,7 +86,7 @@ Route::get('delete/coupon/{id}', 'Admin\CouponController@DeleteCoupon');
 Route::get('edit/coupon/{id}', 'Admin\CouponController@EditCoupon');
 Route::post('update/coupon/{id}', 'Admin\CouponController@UpdateCoupon');
 //newslater
-Route::get('admin/newslater', 'Admin\CouponController@newsletter')->name('admin.newsletter');
+Route::get('admin/newslettter', 'Admin\CouponController@Newslater')->name('admin.newsletter');
 Route::get('delete/sub/{id}', 'Admin\CouponController@DeleteSub');
 //products routes=====
 Route::get('admin/product/all', 'Admin\ProductController@index')->name('all.product');
@@ -106,8 +108,9 @@ Route::get('delete/post/{id}', 'Admin\PostController@destroy');
 Route::get('edit/post/{id}', 'Admin\PostController@edit');
 Route::post('update/post/{id}', 'Admin\PostController@update');
 
-
-
+//admin order routes
+Route::get('admin/pending/order', 'Admin\OrderController@NewOrder')->name('admin.neworder');
+Route::get('admin/view/order/{id}', 'Admin\OrderController@ViewOrder');
 
 
 //frontedn all routesa are here--------
@@ -115,3 +118,6 @@ Route::post('store/newslater', 'FrontController@StoreNewslater')->name('store.ne
 
 Route::get('/product/details/{id}/{product_name}', 'ProductController@ProductView');
 Route::post('/cart/product/add/{id}', 'ProductController@AddCart');
+
+Route::get('/products/{id}', 'ProductController@productsView');
+//customer profile related routes
