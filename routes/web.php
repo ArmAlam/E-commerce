@@ -112,8 +112,19 @@ Route::post('update/post/{id}', 'Admin\PostController@update');
 Route::get('admin/pending/order', 'Admin\OrderController@NewOrder')->name('admin.neworder');
 Route::get('admin/view/order/{id}', 'Admin\OrderController@ViewOrder');
 
+Route::get('admin/payment/accept/{id}', 'Admin\OrderController@PaymentAccept');
+Route::get('admin/payment/cancel/{id}', 'Admin\OrderController@PaymentCancel');
+Route::get('admin/accept/payment', 'Admin\OrderController@AcceptPaymentOrder')->name('admin.accept.payment');
+Route::get('admin/progress/payment', 'Admin\OrderController@ProgressPaymentOrder')->name('admin.progress.payment');
+Route::get('admin/success/payment', 'Admin\OrderController@SuccessPaymentOrder')->name('admin.success.payment');
+Route::get('admin/cancel/payment', 'Admin\OrderController@CancelPaymentOrder')->name('admin.cancel.order');
+Route::get('admin/delevery/progress/{id}', 'Admin\OrderController@DeleveryProgress');
+Route::get('admin/delevery/done/{id}', 'Admin\OrderController@DeleveryDone');
 
-//frontedn all routesa are here--------
+
+
+
+//frontend all routes are here--------
 Route::post('store/newslater', 'FrontController@StoreNewslater')->name('store.newslater');
 
 Route::get('/product/details/{id}/{product_name}', 'ProductController@ProductView');
