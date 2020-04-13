@@ -3,7 +3,7 @@
     <div class="sl-mainpanel">
       <div class="sl-pagebody">
         <div class="sl-page-title">
-          <h5>Pending Orders </h5>
+          <h5> Order Details</h5>
         </div><!-- sl-page-title -->
 
         <div class="card pd-20 pd-sm-40">
@@ -32,7 +32,19 @@
                   <td>{{ $row->shipping }} $</td>
                   <td>{{ $row->total }} $</td>
                   <td>{{ $row->date }} </td>
-                  <td><span class="badge badge-warning"> Pending</span></td>
+                  <td>
+                    @if($row->status == 0)
+                     <span class="badge badge-warning">Pending</span>
+                    @elseif($row->status == 1)
+                    <span class="badge badge-info">Payment Accept</span>
+                    @elseif($row->status == 2) 
+                     <span class="badge badge-info">Progress </span>
+                     @elseif($row->status == 3)  
+                     <span class="badge badge-success">Delevered </span>
+                     @else
+                     <span class="badge badge-danger">Cancel </span>
+                     @endif
+              
                   <td>
                   	<a href="{{ URL::to('admin/view/order/'.$row->id) }}" class="btn btn-sm btn-info">View</a>
                   </td>

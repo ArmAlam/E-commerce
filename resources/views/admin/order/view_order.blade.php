@@ -154,15 +154,15 @@
               <a href="{{ url('admin/payment/accept/'.$order->id) }}" class="btn btn-info">Payment Accept</a>
               <a href="{{ url('admin/payment/cancel/'.$order->id) }}" class="btn btn-danger" id="delete">Cancel Order</a>
           @elseif($order->status == 1)
-              <a href="{{ url('admin/delevery/progress/'.$order->id) }}" class="btn btn-info">Delevery Progress</a>
-              <strong> Payment Already Checked and pass here for delevery request</strong>
+              <a href="{{ url('admin/delevery/progress/'.$order->id) }}" class="btn btn-info">Delivery Progress</a>
+              <strong> Payment Already Checked and pass here for delevery request.</strong>
           @elseif($order->status == 2)
-               <a href="{{ url('admin/delevery/done/'.$order->id) }}" class="btn btn-success">Delevered Done</a>
-               <strong> Payment Already done your product are handover successfully</strong>
+               <a href="{{ url('admin/delevery/done/'.$order->id) }}" class="btn btn-success">Delivery Done</a>
+               <strong> Payment Already done your product are handover successfully.</strong>
           @elseif($order->status == 4)
-            <strong class="text-danger">This order are not valid its canceled</strong>
+            <strong class="text-danger">This order is not valid. It's cancelled.</strong>
             @else
-             <strong class="text-success">This product are succesfully delevered</strong>
+             <strong class="text-success">This product are succesfully Delivered.</strong>
             @endif
                  
       </div>
