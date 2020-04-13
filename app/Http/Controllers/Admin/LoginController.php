@@ -33,25 +33,32 @@ class LoginController extends Controller
      *
      * @return void
      */
-     public function __construct()
+    public function __construct()
     {
         $this->middleware('guest:admin')->except('logout');
     }
 
     public function showLoginForm()
     {
-        //  if (Auth::id()) {
-        //      return redirect()->back();
-        //  }else{
+        if (Auth::id()) {
+            return redirect()->back();
+        } else {
 
             return view('admin.auth.login');
 
-        //  }
+            //  }
 
+        }
     }
 
     protected function guard()
     {
         return Auth::guard('admin');
+    }
+
+    public function login()
+    {
+        $result = "Under construction";
+        return $result;
     }
 }

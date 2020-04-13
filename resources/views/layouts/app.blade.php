@@ -1,3 +1,7 @@
+@php
+    $setting=DB::table('sitesetting')->first();
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,9 +46,23 @@
             <div class="container">
                 <div class="row">
                     <div class="col d-flex flex-row">
-                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('public/frontend/images/phone.png') }}" alt=""></div>+38 068 005 3570</div>
-                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('public/frontend/images/mail.png') }}" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
+                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('public/frontend/images/phone.png') }}" alt=""></div>{{ $setting->phone_one }}</div>
+                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{ asset('public/frontend/images/mail.png') }}" alt=""></div><a href="mailto:{{ $setting->email }}">{{ $setting->email }}</a></div>
                         <div class="top_bar_content ml-auto">
+                            <div class="top_bar_menu">
+                                <ul class="standard_dropdown ">
+                                  
+                                    <li>
+                                       <a href="#" data-toggle="modal" data-target="#exampleModal">My Order Traking</a>
+                                        
+                                    </li>
+                             
+                                </ul>
+                            </div>&nbsp;&nbsp;&nbsp;
+
+                          
+
+
                             <div class="top_bar_menu">
                                 <ul class="standard_dropdown ">
                                     @php 
@@ -108,7 +126,7 @@
                                   @if(session()->get('lang') == 'bangla')
                                      এল এইচ স্টোর
                                      @else
-                                       LH Store
+                                      {{ $setting->company_name }}
                                      @endif
                           
                         </a></div>
@@ -193,6 +211,10 @@
 
         @yield('content')
 
+@php
+    $setting=DB::table('sitesetting')->first();
+@endphp
+
     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -200,12 +222,12 @@
                 <div class="col-lg-3 footer_col">
                     <div class="footer_column footer_contact">
                         <div class="logo_container">
-                            <div class="logo"><a href="#">OneTech</a></div>
+                            <div class="logo"><a href="#">{{ $setting->company_name }}</a></div>
                         </div>
                         <div class="footer_title">Got Question? Call Us 24/7</div>
-                        <div class="footer_phone">+38 068 005 3570</div>
+                        <div class="footer_phone">{{ $setting->phone_two}}</div>
                         <div class="footer_contact_text">
-                            <p>17 Princess Road, London</p>
+                            <p>{{ $setting->company_address }}</p>
                             <p>Grester London NW18JR, UK</p>
                         </div>
                         <div class="footer_social">
@@ -294,6 +316,31 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         </div>
     </div>
 </div>
+
+
+  <!-- Order Tracking Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Your Status Code</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                     <form method="post" action="{{ route('order.tracking') }}">
+                                         @csrf
+                                         <div class="form-row">
+                                              <label>Status Code</label>
+                                               <input type="text" name="code" required="" class="form-control" placeholder="Your Order Status Code">
+                                         </div><br>
+                                         <button class="btn btn-danger" type="submit">Track Now</button>                 
+                                     </form>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
 
 <script src="{{ asset('public/frontend/js/jquery-3.3.1.min.js')}}"></script>
 <script src="{{ asset('public/frontend/styles/bootstrap4/popper.js')}}"></script>
