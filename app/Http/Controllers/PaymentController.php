@@ -77,10 +77,11 @@ class PaymentController extends Controller
         $data['date'] = date('d-m-y');
         $data['month'] = date('F');
         $data['year'] = date('Y');
+        $data['status_code'] = mt_rand(100000, 999999);
         $order_id = DB::table('orders')->insertGetId($data);
 
-        // insert shipping details table
 
+        // insert shipping details table
         $shipping = array();
         $shipping['order_id'] = $order_id;
         $shipping['ship_name'] = $request->ship_name;
@@ -90,7 +91,7 @@ class PaymentController extends Controller
         $shipping['ship_city'] = $request->ship_city;
         DB::table('shipping')->insert($shipping);
 
-        //insert data into orderdeatils
+        //insert data into order_details
         $content = Cart::content();
         $details = array();
         foreach ($content as $row) {
