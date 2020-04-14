@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use DB;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class ReportController extends Controller
 {
@@ -97,7 +98,7 @@ class ReportController extends Controller
         $data['type'] = 2;
         DB::table('admins')->insert($data);
         $notification = array(
-            'messege' => 'Child Admin Create Successfully',
+            'messege' => 'Child Admin Created Successfully',
             'alert-type' => 'success'
         );
         return Redirect()->back()->with($notification);
