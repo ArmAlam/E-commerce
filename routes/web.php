@@ -28,6 +28,9 @@ Route::get('payment/page/', 'CartController@PymentPage')->name('payment.step');
 Route::post('user/payment/process/', 'PaymentController@payment')->name('payment.process');
 Route::post('user/stripe/charge/', 'PaymentController@STripeCharge')->name('stripe.charge');
 
+Route::get('success/list/', 'PaymentController@SuccessList')->name('success.orderlist');
+Route::get('request/return/{id}', 'PaymentController@RequestReturn');
+
 //blog routes
 
 Route::get('blog/post', 'BlogController@blog')->name('blog.post');
@@ -52,10 +55,10 @@ Route::get('admin/home', 'AdminController@index');
 Route::get('admin', 'Admin\LoginController@showLoginForm')->name('admin.login');
 Route::post('admin', 'Admin\LoginController@login');
 // Password Reset Routes...
-Route::get('admin/password/reset', 'Admin\ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
-Route::get('admin/password/email', 'Admin\ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
-Route::get('admin/password/reset/{token}', 'Admin\ResetPasswordController@showResetForm')->name('admin.password.reset');
-Route::get('admin/password/reset', 'Admin\ResetPasswordController@reset');
+Route::get('admin-password/reset', 'Admin\ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
+Route::get('admin-password/email', 'Admin\ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
+Route::get('admin-password/reset/{token}', 'Admin\ResetPasswordController@showResetForm')->name('admin.password.reset');
+Route::get('admin-password/reset', 'Admin\ResetPasswordController@reset');
 Route::get('/admin/Change/Password', 'AdminController@ChangePassword')->name('admin.password.change');
 Route::post('/admin/password/update', 'AdminController@Update_pass')->name('admin.password.update');
 Route::get('admin/logout', 'AdminController@logout')->name('admin.logout');
@@ -138,6 +141,9 @@ Route::post('admin/store/admin', 'Admin\ReportController@UserStore')->name('stor
 Route::get('delete/admin/{id}', 'Admin\ReportController@UserDelete');
 Route::get('edit/admin/{id}', 'Admin\ReportController@UserEdit');
 Route::post('admin/update/admin', 'Admin\ReportController@UserUpdate')->name('update.admin');
+//stock
+Route::get('admin/product/stock', 'Admin\ReturnController@Stock')->name('admin.product.stock');
+
 //site setting
 Route::get('admin/site/setting', 'Admin\SettingController@SiteSetting')->name('admin.site.setting');
 Route::post('admin/update/sitesetting', 'Admin\SettingController@UpdateSetting')->name('update.sitesetting');
@@ -149,6 +155,11 @@ Route::post('/cart/product/add/{id}', 'ProductController@AddCart');
 
 Route::get('/products/{id}', 'ProductController@productsView');
 
+//return products admin panel
+Route::get('admin/return/request', 'Admin\ReturnController@request')->name('admin.return.request');
+Route::get('/admin/approve/return/{id}', 'Admin\ReturnController@ApproveReturn');
+Route::get('admin/all/return', 'Admin\ReturnController@AllReturn')->name('admin.all.return');
 
 Route::post('order/tracking', 'FrontController@OrderTracking')->name('order.tracking');
+Route::post('product/search', 'FrontController@ProductSearch')->name('product.search');
 //customer profile related routes

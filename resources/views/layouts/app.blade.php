@@ -140,8 +140,9 @@
                         <div class="header_search">
                             <div class="header_search_content">
                                 <div class="header_search_form_container">
-                                    <form action="#" class="header_search_form clearfix">
-                                        <input type="search" required="required" class="header_search_input" placeholder="Search for products...">
+                                    <form action="{{ route('product.search') }}" class="header_search_form clearfix" method="post">
+                                        @csrf
+                                        <input type="search" required="required" class="header_search_input" placeholder="Search for products..." name="search">
                                         <div class="custom_dropdown">
                                             <div class="custom_dropdown_list">
                                                 <span class="custom_dropdown_placeholder clc">All Categories</span>
@@ -358,7 +359,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 <script src="{{ asset('public/frontend/js/product_custom.js') }}"></script>
 
-
+    <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
@@ -382,6 +383,27 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
           }
         @endif
      </script> 
+
+      <script>  
+         $(document).on("click", "#return", function(e){
+             e.preventDefault();
+             var link = $(this).attr("href");
+                swal({
+                  title: "Are you sure to Return?",
+                  text: "Once Return,You will return your money!",
+                  icon: "warning",
+                  buttons: true,
+                  dangerMode: true,
+                })
+                .then((willDelete) => {
+                  if (willDelete) {
+                       window.location.href = link;
+                  } else {
+                    swal("Cancel");
+                  }
+                });
+            });
+    </script>
 
 
 

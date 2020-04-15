@@ -145,7 +145,7 @@
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
           <li class="nav-item"><a href="{{ route('today.order') }}" class="nav-link">Today Order</a></li>
-          <li class="nav-item"><a href="{{ route('today.delevered') }}" class="nav-link">Today Delivered</a></li>
+          <li class="nav-item"><a href="{{ route('today.delevered') }}" class="nav-link">Today Delevered</a></li>
           <li class="nav-item"><a href="{{ route('this.month') }}" class="nav-link">This Month</a></li>
           <li class="nav-item"><a href="{{ route('search.report') }}" class="nav-link">Search Report</a></li>
         </ul>
@@ -176,8 +176,22 @@
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
-              <li class="nav-item"><a href="#" class="nav-link">Return Request</a></li>
-               <li class="nav-item"><a href="#" class="nav-link">All Return</a></li>
+              <li class="nav-item"><a href="{{ route('admin.return.request') }}" class="nav-link">Return Request</a></li>
+               <li class="nav-item"><a href="{{ route('admin.all.return') }}" class="nav-link">All Return</a></li>
+        </ul>
+        @else
+        @endif
+
+         @if(Auth::user()->stock == 1)
+        <a href="#" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon icon ion-ios-paper-outline tx-22"></i>
+            <span class="menu-item-label">Product Stock</span>
+            <i class="menu-item-arrow fa fa-angle-down"></i>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+        <ul class="sl-menu-sub nav flex-column">
+              <li class="nav-item"><a href="{{ route('admin.product.stock') }}" class="nav-link">Stock</a></li>
         </ul>
         @else
         @endif
@@ -224,6 +238,7 @@
         </ul>
         @else
         @endif
+
 
 
       </div><!-- sl-sideleft-menu -->
