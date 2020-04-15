@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
 	<div class="single_product">
 		<div class="container">
 			<div class="row">
@@ -78,7 +77,9 @@
 								<div class="button_container">
 									<button type="submit" class="button cart_button">Add to Cart</button>
 									<div class="product_fav"><i class="fas fa-heart"></i></div>
-								</div>
+								</div><br>
+								
+								<div class="sharethis-inline-share-buttons"></div>
 								
 							</form>
 						</div>
@@ -112,7 +113,7 @@
 							    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Video or Link</a>
 							  </li>
 							  <li class="nav-item">
-							    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Product Review</a>
+							    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Reviews</a>
 							  </li>
 							</ul><br>
 							<div class="tab-content" id="myTabContent">
@@ -123,7 +124,9 @@
 							  	 Product Videos : {!! $product->video_link !!}
 							  </div>
 							  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-							  	Comment Box
+
+							  	<div class="fb-comments" data-href="{{ Request::url() }}" data-width="" data-numposts="8"></div>
+
 							  </div>
 							</div>
 					</div>
@@ -131,6 +134,8 @@
 			</div>
 		</div>
 	</div>
-
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v5.0"></script>
+<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5dff5c0e258810001231d9cc&product=inline-share-buttons&cms=sop' async='async'></script>
 
 @endsection
