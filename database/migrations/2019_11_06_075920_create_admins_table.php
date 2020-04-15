@@ -33,6 +33,7 @@ class CreateAdminsTable extends Migration
             $table->string('contact')->nullable();
             $table->string('comment')->nullable();
             $table->string('setting')->nullable();
+            $table->string('stock')->nullable();
             $table->integer('type')->nullable();
             $table->timestamps();
         });

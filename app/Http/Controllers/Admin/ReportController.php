@@ -95,6 +95,7 @@ class ReportController extends Controller
         $data['other'] = $request->other;
         $data['return'] = $request->return;
         $data['setting'] = $request->setting;
+        $data['stock'] = $request->stock;
         $data['type'] = 2;
         DB::table('admins')->insert($data);
         $notification = array(

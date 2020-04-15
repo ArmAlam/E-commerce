@@ -60,6 +60,10 @@
                       @if($row->report == 1)
                          <span class="badge badge-success">report</span>
                       @else
+
+                      @if($row->stock == 1)
+                        <span class="badge badge-danger">stock</span>
+                      @else
                       @endif
 
                       @if($row->role == 1)
