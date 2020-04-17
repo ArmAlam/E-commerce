@@ -147,6 +147,13 @@ Route::get('admin/product/stock', 'Admin\ReturnController@Stock')->name('admin.p
 //site setting
 Route::get('admin/site/setting', 'Admin\SettingController@SiteSetting')->name('admin.site.setting');
 Route::post('admin/update/sitesetting', 'Admin\SettingController@UpdateSetting')->name('update.sitesetting');
+
+//database backup
+Route::get('admin/database/backup', 'Admin\SettingController@DatabaseBackup')->name('admin.database.backup');
+Route::get('admin/database/backup/now', 'Admin\SettingController@BackupNow')->name('admin.backup.now');
+Route::get('delete/database/{getFilename}', 'Admin\SettingController@DeleteDatabase');
+
+
 //frontedn all routesa are here--------
 Route::post('store/newslater', 'FrontController@StoreNewslater')->name('store.newslater');
 

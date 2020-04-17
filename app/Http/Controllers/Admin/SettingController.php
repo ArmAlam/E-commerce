@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use DB;
+use File;
+use Illuminate\Support\Facades\Storage;
+
 
 class SettingController extends Controller
 {
@@ -34,6 +38,31 @@ class SettingController extends Controller
         DB::table('sitesetting')->where('id', $id)->update($data);
         $notification = array(
             'messege' => 'Setting Update',
+            'alert-type' => 'success'
+        );
+        return Redirect()->back()->with($notification);
+    }
+
+    public function DatabaseBackup()
+    {
+        return view('admin.setting.db_backup')->with('files', File::allFiles('storage/app/Laravel'));
+    }
+
+    public function BackupNow()
+    {
+        \Artisan::call('backup:run');
+        $notification = array(
+            'messege' => 'Database Backup Done',
+            'alert-type' => 'success'
+        );
+        return Redirect()->back()->with($notification);
+    }
+
+    public function DeleteDatabase($getFilename)
+    {
+        Storage::delete('Laravel/' . $getFilename);
+        $notification = array(
+            'messege' => 'Successfully Backup Delete  ',
             'alert-type' => 'success'
         );
         return Redirect()->back()->with($notification);

@@ -16,6 +16,7 @@
         "laravel/passport": "^8.4",
         "laravel/socialite": "^4.3",
         "laravel/tinker": "^1.0",
+        "spatie/laravel-backup": "^6.8",
         "stripe/stripe-php": "^7.28"
     },
     "require-dev": {
